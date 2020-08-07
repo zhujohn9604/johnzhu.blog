@@ -14,3 +14,7 @@ My name is ZHU Chen, currently a master student at U of Tokyo, School of Enginee
 
 # About this site
 I was considering building my personal website very early, aiming to log what I've learned for both reviewing and sharing purposes. Currently, this site is still at a developing stage, and I will continue updating it.
+
+
+# Others
+[CV](tabs/CV - Chen Zhu.pdf)
