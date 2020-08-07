@@ -24,10 +24,10 @@ author: 'ZHU Chen'                  # change to your full name
 avatar: /assets/img/sample/avatar.jpg   # support internet resources
 
 github:
-  username: zhujohn9604             # change to your github username
+  username: 'zhujohn9604'             # change to your github username
 
 twitter:
-  username: akagami9604            # change to your twitter username
+  username: 'akagami9604'            # change to your twitter username
 
 social:
   name: ZHU Chen                  # it will shows as the copyright owner in Footer
