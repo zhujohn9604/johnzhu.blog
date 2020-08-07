@@ -19,12 +19,12 @@ description: >-                        # used by seo meta and the atom feed
 # url: 'protocol://domain'
 url: 'https://zhujohn9604.github.io'
 
-author: ZHU Chen                  # change to your full name
+author: 'ZHU Chen'                  # change to your full name
 
 avatar: /assets/img/sample/avatar.jpg   # support internet resources
 
 github:
-  username: zhujohn9604             # change to your github username
+  username: 'zhujohn9604'             # change to your github username
 
 twitter:
   username: twitter_username            # change to your twitter username
