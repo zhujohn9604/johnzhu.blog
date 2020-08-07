@@ -28,6 +28,7 @@
   icon: "fas fa-info"
   path: tabs
   url: about
+  
 #-
 #  name: "CV"
 #  icon: "fas fa-file"
