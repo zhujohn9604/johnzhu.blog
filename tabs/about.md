@@ -17,4 +17,3 @@ I was considering building my personal website very early, aiming to log what I'
 
 
 # Others
-[CV](www.google.com)
