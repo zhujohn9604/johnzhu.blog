@@ -1,7 +1,7 @@
 ---
 title: "Antisymmetic component disapears in the quadratic form"
 author: ZHU Chen
-date: 2019-08-08 11:33:00 +0800
+date: 2020-07-12 11:33:00 +0800
 categories: [PRML]
 tags: [PRML]
 math: true
