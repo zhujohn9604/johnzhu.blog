@@ -77,3 +77,68 @@ b_N = \frac{1}{2}\sum_{n=1}^{N}(x_n-\mu)^2 + b_0 = \frac{N}{2}\sigma^2_{ML} + b_
 \end{align}
 
 where $$\sigma^2_{ML} = \frac{1}{N} \sum_{n=1}^{N} (x_n-\mu)^2$$.
+
+### Discussion
+From the expression of \\(a_N\\), we notice that \\(N \\) subsequent observations contribute \\(N/2 \\) to the coefficient \\(a \\). Thus, one can interpret the $$a_0$$ in the prior as $$2a_0$$ `effective prior observations`. Similarly, from the expression of $$b_N$$ we can see that \\(N \\) subsequent observations increase the coefficient \\(b \\) by $$\frac{N}{2}\sigma^2_{ML}$$. Thus, the variance of the `effective prior observation` can be calculated by the total variance \\(2b_0 \\) divided by the number of effective prior observations \\(2a_0\\), which is \\(2b_0 / 2a_0 = b_0/a_0\\).
+
+## Unknown variance \\( \sigma^2 \\) and unknown mean \\( \mu \\)
+Finally, let's consider both the mean and the variance are unknown. Similarly, we first write down the likelihood function in terms of mean $$\mu$$ and precision $$\lambda$$ as
+\begin{align}
+p(\mathbf{X}|\mu, \lambda) = \left(\frac{\lambda}{2\pi}\right)^{N/2}\exp{\left(-\frac{\lambda}{2}\sum_{n=1}^{N}(x_n - \mu)^2\right)}
+\end{align}
+\begin{align}
+\propto \left[\lambda^{1/2}\exp{\left(-\frac{\lambda \mu^2}{2} \right)} \right]^{N}\exp{\left(-\frac{\lambda}{2}\sum_{n=1}^{N}x_n^2 + \lambda\mu\sum_{n=1}^{N}x_n  \right)}
+\end{align}
+By observing the form of By observing the form of likelihood function, the conjugate prior should take the form as
+\begin{align}
+p(\mu, \lambda) \propto \left[\lambda^{1/2}\exp{\left(-\frac{\lambda \mu^2}{2} \right)} \right]^{\beta}\exp{\left(-d \lambda + c\lambda\mu  \right)}
+\end{align}
+\begin{align}
+=\exp{\left[-\frac{\beta \lambda}{2}(\mu-c/\beta)^2 \right]}\lambda^{\beta/2}\exp{\left[-\left(d-\frac{c^2}{2\beta} \right)\lambda \right]}
+\end{align}
+By inspecting into the form of the $$p(\mu, \lambda)$$, we notice that it may consist of two components; one from a Gaussian and the other from a Gamma distribution. Formally, the prior can take the form as
+\begin{align}
+p(\mu, \lambda) = \mathcal{N}(\mu| c/\beta, (\beta\lambda)^{-1}){\rm Gam}(\lambda| \beta/2+1, d-c^2/(2\beta))
+\end{align}
+which is called as a `Gaussian-gamma distribution`. One need to notice that these two are not independent to each other, becauase the precision of \\(\mu \\) is a linear function of \\(\lambda \\).
+
+## Extension to the multivariate case
+In the case of multivariate Gaussian distribution \\(\mathcal{N}(\mathbf{x}|\mathbf{\mu}, \mathbf{\Lambda^{-1}})\\) for a $$D$$-dimensional $$\mathbf{x}$$. When the mean $$\mathbf{\mu}$$ is known and we want to infer the precision matrix $$\mathbf{\Lambda}$$, the likelihood function is given as
+\begin{align}
+p(\mathbf{X}|\mathbf{\Lambda}) = \prod_{n=1}^{N} \mathcal{N}(\mathbf{x}|\mathbf{\mu}, \mathbf{\Lambda^{-1}})
+\end{align}
+\begin{align}
+\propto |\Lambda|^{N/2}\exp{\left[-\frac{1}{2}\sum_{n=1}^{N}(\mathbf{x}_n-\mathbf{\mu})^{T}\mathbf{\Lambda}(\mathbf{x}_n-\mathbf{\mu}) \right]}
+\end{align}
+
+\begin{align}
+= |\Lambda|^{N/2}\exp{\left[-\frac{1}{2}\sum_{n=1}^{N} {\rm Tr} ((\mathbf{x}_n-\mathbf{\mu})^{T}\mathbf{\Lambda}(\mathbf{x}_n-\mathbf{\mu})) \right]}
+\end{align}
+
+\begin{align}
+= |\Lambda|^{N/2}\exp{\left[-\frac{1}{2}\sum_{n=1}^{N} {\rm Tr} ((\mathbf{x}_n-\mathbf{\mu})(\mathbf{x}_n-\mathbf{\mu})^{T}\mathbf{\Lambda}) \right]}
+\end{align}
+
+\begin{align}
+= |\Lambda|^{N/2}\exp{\left[-\frac{1}{2} {\rm Tr} (\sum_{n=1}^{N}(\mathbf{x}_n-\mathbf{\mu})(\mathbf{x}_n-\mathbf{\mu})^{T}\mathbf{\Lambda}) \right]}
+\end{align}
+
+\begin{align}
+= |\Lambda|^{N/2}\exp{\left[-\frac{1}{2} {\rm Tr} (\mathbf{S} \mathbf{\Lambda}) \right]}
+\end{align}
+where $$\mathbf{S}= \sum_{n=1}^{N}(\mathbf{x}_n-\mathbf{\mu})(\mathbf{x}_n-\mathbf{\mu})^{T}$$.
+
+A conjugate prior therefore comes from the `Wishart` distribution, which is given as
+\begin{align}
+\mathcal{W}(\mathbf{\Lambda}|\mathbf{W}, \mathcal{v}) \propto |\Lambda|^{(\mathcal{v}-D-1)/2}\exp{\left[-\frac{1}{2} {\rm Tr} (\mathbf{W}^{-1} \mathbf{\Lambda}) \right]}
+\end{align}
+
+The posterior distribution is then given as
+\begin{align}
+p(\mathbf{\Lambda}|\mathbf{X}, \mathbf{W}, \mathcal{v}) \propto p(\mathbf{X}|\mathbf{\Lambda}) \mathcal{W}(\mathbf{\Lambda}|\mathbf{W}, \mathcal{v})
+\end{align}
+
+\begin{align}
+\propto |\Lambda|^{(\mathcal{v} + N -D-1)/2}\exp{\left[-\frac{1}{2} {\rm Tr} ((\mathbf{S}+\mathbf{W}^{-1}) \mathbf{\Lambda}) \right]}
+\end{align}
+where $$\mathcal{v}_N = \mathcal{v} + N$$ and $$\mathbf{W}_N = (\mathbf{S}+\mathbf{W}^{-1})^{-1}$$.
