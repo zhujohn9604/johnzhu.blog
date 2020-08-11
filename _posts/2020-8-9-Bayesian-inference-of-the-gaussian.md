@@ -1,7 +1,7 @@
 ---
 title: "Bayesian inference for the Gaussian"
 author: ZHU Chen
-date: 2020-07-12 11:33:00 +0800
+date: 2020-08-07 11:33:00 +0800
 categories: [PRML]
 tags: [PRML]
 math: true
