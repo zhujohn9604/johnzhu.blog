@@ -1,0 +1,5 @@
+User-agent: *
+
+Disallow: /norobots/
+
+Sitemap: https://zhujohn9604.github.io/johnzhu.blog/sitemap.xml
