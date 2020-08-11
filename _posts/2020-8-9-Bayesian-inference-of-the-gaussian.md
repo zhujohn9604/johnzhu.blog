@@ -6,7 +6,7 @@ categories: [PRML]
 tags: [PRML]
 math: true
 ---
-## Known variance \\( \sigma^2 \\) and unknown mean \\( \mu \\)
+## Known variance \\( \sigma^2 \\) and unknown mean \\( \mu \\)[^footnote]
 Consider a set of \\( N \\) observations \\( \mathbf{X} = \{x_1, \cdots, x_n\} \\) from a Gaussian, where the variance \\(\sigma^2 \\) is known, and we want to infer the mean \\(\mu \\). The likelihood function is therefore can be written as
 \begin{align}
 p(\mathbf{X}| \mu) = \prod_{n=1}^{N} p(x_n|\mu) = \frac{1}{(2\pi\sigma^2)^{N/2}}\exp{\left(-\frac{1}{2\sigma^2}\sum_{n=1}^{N}(x_n-\mu)^2\right)}
@@ -142,3 +142,6 @@ p(\mathbf{\Lambda}|\mathbf{X}, \mathbf{W}, \mathcal{v}) \propto p(\mathbf{X}|\ma
 \propto |\Lambda|^{(\mathcal{v} + N -D-1)/2}\exp{\left[-\frac{1}{2} {\rm Tr} ((\mathbf{S}+\mathbf{W}^{-1}) \mathbf{\Lambda}) \right]}
 \end{align}
 where $$\mathcal{v}_N = \mathcal{v} + N$$ and $$\mathbf{W}_N = (\mathbf{S}+\mathbf{W}^{-1})^{-1}$$.
+
+#### Reference chapter
+[^footnote]: PRML 2.3.6
